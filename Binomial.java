@@ -32,20 +32,21 @@ public class Binomial {
 
 	private static int binomial(int n, int k, int[][] memo) {
 		if (memo[n][k] != -1) {
-			return memo[n][k];
-		}
-		// Base case
-		if ((k > n)) {
-		   	memo[n][k] = 0; 
-		   	return 0;
-		}
-		// Another base case
-		if (n == 0 || k == 0) {
-		   	memo[n][k] = 1; 
-		   	return 1;
-		}
-		memo[n][k] = binomial(n - 1, k, memo) + binomial(n - 1, k - 1, memo);
-		return memo[n][k];
+            return memo[n][k];
+        }
+        
+        // Base cases
+        if (k > n) {
+            memo[n][k] = 0; 
+            return 0;
+        }
+        if (n == 0 || k == 0) {
+            memo[n][k] = 1; 
+            return 1;
+        }
+
+        memo[n][k] = binomial(n - 1, k, memo) + binomial(n - 1, k - 1, memo);
+        return memo[n][k];
 	}
 }
 
